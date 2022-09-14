@@ -11,12 +11,6 @@ class AppTest {
     Atm atmUnderTest = new Atm();
 
     @Test
-    void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
-
-    @Test
     void checkCostumerDeposit() {
         assertTrue(costumerUnderTest.depositMoney(500));
         assertEquals(500, costumerUnderTest.getBalance());

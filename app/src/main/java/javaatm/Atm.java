@@ -23,7 +23,7 @@ public class Atm {
       System.out.println("3. Whitdraw money");
       System.out.println("0. Exit");
       System.out.println("--------------------------");
-      System.out.print("Please enter your choise: ");
+      System.out.print("Please enter your choice: ");
 
       response = sc.nextInt();
 
