@@ -42,7 +42,9 @@ class AppTest {
 
     @Test
     void checkAtmWhitdrawal() {
-        costumerUnderTest.depositMoney(50);
+        costumerUnderTest.depositMoney(100);
         assertEquals(true, atmUnderTest.makeWhitdrawal(costumerUnderTest, 50));
+        assertEquals(true, atmUnderTest.makeWhitdrawal(costumerUnderTest, 50));
+        assertEquals(false, atmUnderTest.makeWhitdrawal(costumerUnderTest, 5));
     }
 }
