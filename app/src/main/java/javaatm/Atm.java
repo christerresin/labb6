@@ -27,11 +27,7 @@ public class Atm {
           getCostumerBalance();
           break;
         case 2:
-          sc.nextLine(); // clear Scanner
-          System.out.print("Please enter amount to deposit: ");
-          double depositAmount = sc.nextDouble();
-          makeDeposit(currentCostumer, depositAmount);
-          clearWindow();
+          makeCostumerDeposit();
           break;
         case 3:
           sc.nextLine(); // clear Scanner
@@ -83,9 +79,17 @@ public class Atm {
   }
 
   public void getCostumerBalance() {
-    sc.nextLine();
+    sc.nextLine(); // clear Scanner
     double currentBalance = currentCostumer.getBalance();
     System.out.println("Current balance: " + currentBalance);
+    clearWindow();
+  }
+
+  public void makeCostumerDeposit() {
+    sc.nextLine(); // clear Scanner
+    System.out.print("Please enter amount to deposit: ");
+    double depositAmount = sc.nextDouble();
+    makeDeposit(currentCostumer, depositAmount);
     clearWindow();
   }
 
