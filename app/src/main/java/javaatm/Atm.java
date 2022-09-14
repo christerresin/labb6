@@ -18,31 +18,23 @@ public class Atm {
     System.out.println("Welcome to World Bank ATM.");
 
     while (response != 0) {
-      System.out.println("1. Check your balance");
-      System.out.println("2. Deposit money");
-      System.out.println("3. Whitdraw money");
-      System.out.println("0. Exit");
-      System.out.println("--------------------------");
-      System.out.print("Please enter your choice: ");
+      presentOptionsMessage();
 
       response = sc.nextInt();
 
       switch (response) {
         case 1:
-          sc.nextLine();
-          double currentBalance = costumer.getBalance();
-          System.out.println("Current balance: " + currentBalance);
-          clearWindow();
+          getCostumerBalance();
           break;
         case 2:
-          sc.nextLine();
+          sc.nextLine(); // clear Scanner
           System.out.print("Please enter amount to deposit: ");
           double depositAmount = sc.nextDouble();
           makeDeposit(currentCostumer, depositAmount);
           clearWindow();
           break;
         case 3:
-          sc.nextLine();
+          sc.nextLine(); // clear Scanner
           System.out.print("Please enter amount to whitdrawal: ");
           double whitdrawalAmount = sc.nextDouble();
           makeWhitdrawal(costumer, whitdrawalAmount);
@@ -79,6 +71,22 @@ public class Atm {
     }
     System.out.println();
     System.out.println();
+  }
+
+  public void presentOptionsMessage() {
+    System.out.println("1. Check your balance");
+    System.out.println("2. Deposit money");
+    System.out.println("3. Whitdraw money");
+    System.out.println("0. Exit");
+    System.out.println("--------------------------");
+    System.out.print("Please enter your choice: ");
+  }
+
+  public void getCostumerBalance() {
+    sc.nextLine();
+    double currentBalance = currentCostumer.getBalance();
+    System.out.println("Current balance: " + currentBalance);
+    clearWindow();
   }
 
 }
