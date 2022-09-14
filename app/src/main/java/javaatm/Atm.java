@@ -30,11 +30,7 @@ public class Atm {
           makeCostumerDeposit();
           break;
         case 3:
-          sc.nextLine(); // clear Scanner
-          System.out.print("Please enter amount to whitdrawal: ");
-          double whitdrawalAmount = sc.nextDouble();
-          makeWhitdrawal(costumer, whitdrawalAmount);
-          clearWindow();
+          makeCostumerWhitdrawal();
           break;
       }
     }
@@ -90,6 +86,14 @@ public class Atm {
     System.out.print("Please enter amount to deposit: ");
     double depositAmount = sc.nextDouble();
     makeDeposit(currentCostumer, depositAmount);
+    clearWindow();
+  }
+
+  public void makeCostumerWhitdrawal() {
+    sc.nextLine(); // clear Scanner
+    System.out.print("Please enter amount to whitdrawal: ");
+    double whitdrawalAmount = sc.nextDouble();
+    makeWhitdrawal(currentCostumer, whitdrawalAmount);
     clearWindow();
   }
 
