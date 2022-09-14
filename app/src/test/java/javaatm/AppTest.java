@@ -19,4 +19,12 @@ class AppTest {
         assertTrue(costumerUnderTest.depositMoney(500));
         assertEquals(500, costumerUnderTest.getBalance());
     }
+
+    @Test
+    void checkCostumerWhitdrawal() {
+        Costumer costumerUnderTest = new Costumer("Test test");
+        costumerUnderTest.depositMoney(100);
+        costumerUnderTest.whitdrawMoney(50);
+        assertEquals(50, costumerUnderTest.getBalance());
+    }
 }
