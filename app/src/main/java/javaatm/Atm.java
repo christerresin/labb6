@@ -26,12 +26,22 @@ public class Atm {
       switch (response) {
         case 1:
           sc.nextLine();
+          double currentBalance = costumer.getBalance();
+          System.out.println("Current balance: " + currentBalance);
+          clearWindow();
           break;
         case 2:
           sc.nextLine();
           System.out.print("Please enter amount to deposit: ");
-          double amount = sc.nextDouble();
-          makeDeposit(currentCostumer, amount);
+          double depositAmount = sc.nextDouble();
+          makeDeposit(currentCostumer, depositAmount);
+          clearWindow();
+          break;
+        case 3:
+          sc.nextLine();
+          System.out.print("Please enter amount to whitdrawal: ");
+          double whitdrawalAmount = sc.nextDouble();
+          makeWhitdrawal(costumer, whitdrawalAmount);
           clearWindow();
           break;
       }
@@ -50,6 +60,7 @@ public class Atm {
     double costumerCurrentBalance = costumer.getBalance();
 
     if (costumerCurrentBalance > amount) {
+      costumer.whitdrawMoney(amount);
       System.out.println("Whitdrawal of " + amount + " was successful.");
       return true;
     }

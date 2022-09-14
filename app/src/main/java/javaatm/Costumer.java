@@ -23,7 +23,7 @@ public class Costumer {
   }
 
   public void whitdrawMoney(double amount) {
-    balance -= this.balance - amount;
+    balance = this.balance - amount;
   }
 
 }
