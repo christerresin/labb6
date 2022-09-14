@@ -7,6 +7,10 @@ public class Atm {
   private int response = 9;
   private Costumer currentCostumer;
 
+  public Atm() {
+
+  }
+
   public Atm(Costumer costumer) {
     this.currentCostumer = costumer;
 
