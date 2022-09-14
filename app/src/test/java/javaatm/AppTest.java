@@ -27,4 +27,10 @@ class AppTest {
         costumerUnderTest.whitdrawMoney(50);
         assertEquals(50, costumerUnderTest.getBalance());
     }
+
+    @Test
+    void checkBalanceOfNewCostumer() {
+        Costumer costumerUnderTest = new Costumer("Test test");
+        assertEquals(0, costumerUnderTest.getBalance());
+    }
 }
