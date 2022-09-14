@@ -18,6 +18,7 @@ public class Atm {
       System.out.println("2. Deposit money");
       System.out.println("3. Whitdraw money");
       System.out.println("0. Exit");
+      System.out.println("--------------------------");
       System.out.print("Please enter your choise: ");
 
       response = sc.nextInt();
@@ -31,6 +32,7 @@ public class Atm {
           System.out.print("Please enter amount to deposit: ");
           double amount = sc.nextDouble();
           makeDeposit(currentCostumer, amount);
+          clearWindow();
           break;
       }
     }
@@ -53,6 +55,15 @@ public class Atm {
     }
     System.out.println("Unable to whitdraw that amount. Check your balance.");
     return false;
+  }
+
+  public void clearWindow() {
+    System.out.println();
+    for (int i = 0; i <= 25; i++) {
+      System.out.print("$");
+    }
+    System.out.println();
+    System.out.println();
   }
 
 }
