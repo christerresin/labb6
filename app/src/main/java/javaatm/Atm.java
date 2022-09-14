@@ -63,7 +63,7 @@ public class Atm {
   public boolean makeWhitdrawal(Costumer costumer, double amount) {
     double costumerCurrentBalance = costumer.getBalance();
 
-    if (costumerCurrentBalance > amount) {
+    if (costumerCurrentBalance >= amount) {
       costumer.whitdrawMoney(amount);
       System.out.println("Whitdrawal of " + amount + " was successful.");
       return true;

@@ -39,4 +39,10 @@ class AppTest {
         atmUnderTest.makeDeposit(costumerUnderTest, 100);
         assertEquals(100, costumerUnderTest.getBalance());
     }
+
+    @Test
+    void checkAtmWhitdrawal() {
+        costumerUnderTest.depositMoney(50);
+        assertEquals(true, atmUnderTest.makeWhitdrawal(costumerUnderTest, 50));
+    }
 }
