@@ -3,13 +3,15 @@
  */
 package javaatm;
 
+import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
 
-        Costumer costumer = new Costumer("Bob Lasar");
-        // Atm atm = new Atm(costumer);
-
         Bank bank = new Bank();
+        Costumer loggedInCostumer = bank.getCostumer("Bob");
+
+        Atm atm = new Atm(loggedInCostumer);
     }
 }

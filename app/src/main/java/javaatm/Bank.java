@@ -8,6 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import com.google.common.base.Optional;
 
 public class Bank {
   private List<Costumer> updatedCostumersList = new ArrayList<>();
@@ -44,9 +49,6 @@ public class Bank {
       ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
       costumersList = (ArrayList) ois.readObject();
       ois.close();
-      for (Costumer person : costumersList) {
-        System.out.println("Name: " + person.name);
-      }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException err) {
@@ -60,6 +62,22 @@ public class Bank {
   private void addNewCostumer(String name) {
     Costumer newCostumer = new Costumer(name);
     updatedCostumersList.add(newCostumer);
+  }
+
+  public Costumer getCostumer(String costumerName) {
+    Costumer foundCostumer = costumersList.stream().filter((c) -> c.name.equals(costumerName)).collect(toSingleton());
+    return foundCostumer;
+  }
+
+  public static <T> Collector<T, ?, T> toSingleton() {
+    return Collectors.collectingAndThen(
+        Collectors.toList(),
+        list -> {
+          if (list.size() != 1) {
+            throw new IllegalStateException();
+          }
+          return list.get(0);
+        });
   }
 
 }
