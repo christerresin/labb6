@@ -8,11 +8,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import com.google.common.base.Optional;
 
 public class Bank {
   private List<Costumer> updatedCostumersList = new ArrayList<>();
@@ -65,19 +64,9 @@ public class Bank {
   }
 
   public Costumer getCostumer(String costumerName) {
-    Costumer foundCostumer = costumersList.stream().filter((c) -> c.name.equals(costumerName)).collect(toSingleton());
-    return foundCostumer;
-  }
+    Optional<Costumer> foundCostumer = costumersList.stream().filter((c) -> c.name.equals(costumerName)).findFirst();
 
-  public static <T> Collector<T, ?, T> toSingleton() {
-    return Collectors.collectingAndThen(
-        Collectors.toList(),
-        list -> {
-          if (list.size() != 1) {
-            throw new IllegalStateException();
-          }
-          return list.get(0);
-        });
+    return foundCostumer.get();
   }
 
 }
