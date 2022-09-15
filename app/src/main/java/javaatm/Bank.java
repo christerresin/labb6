@@ -9,16 +9,13 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Bank {
   private List<Costumer> updatedCostumersList = new ArrayList<>();
   private List<Costumer> costumersList;
   private String fileName = "data.bin";
 
-  public Bank() {
+  public void run() {
 
     addNewCostumer("Keanu");
     addNewCostumer("Bob");

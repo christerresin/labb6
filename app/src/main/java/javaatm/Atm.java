@@ -11,7 +11,7 @@ public class Atm {
 
   }
 
-  public Atm(Costumer costumer) {
+  public void run(Costumer costumer) {
     this.currentCostumer = costumer;
 
     sc = new Scanner(System.in);
