@@ -70,6 +70,7 @@ public class Atm {
     if (customer.depositMoney(amount)) {
       System.out.println("Deposit of " + amount + " was successful.");
       double newBalance = customer.getBalance();
+      bank.updateCurrentCustomerData(currentCustomer);
       System.out.println("New balance: " + newBalance);
     }
   }
