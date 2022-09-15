@@ -12,14 +12,14 @@ import java.util.Optional;
 
 public class Bank {
   private List<Costumer> updatedCostumersList = new ArrayList<>();
-  private List<Costumer> costumersList;
+  private List<Costumer> costumersList = new ArrayList<>();
   private String fileName = "data.bin";
 
   public void run() {
 
-    addNewCostumer("Keanu");
-    addNewCostumer("Bob");
-    addNewCostumer("Stina");
+    // addNewCostumer("Keanu");
+    // addNewCostumerWithBalance("Bob", 200);
+    // addNewCostumer("Stina");
 
     // saveCostumersData();
 
@@ -60,10 +60,35 @@ public class Bank {
     updatedCostumersList.add(newCostumer);
   }
 
+  private void addNewCostumerWithBalance(String name, double balance) {
+    Costumer newCostumer = new Costumer(name, balance);
+    updatedCostumersList.add(newCostumer);
+  }
+
+  private void updateCostumersList(List<Costumer> updatedList) {
+    this.updatedCostumersList = updatedList;
+  }
+
   public Costumer getCostumer(String costumerName) {
     Optional<Costumer> foundCostumer = costumersList.stream().filter((c) -> c.name.equals(costumerName)).findFirst();
-
     return foundCostumer.get();
+
+  }
+
+  public int getPositionOfCostumer(Costumer currentCostumer) {
+    if (costumersList.indexOf(currentCostumer) > 0) {
+
+      return costumersList.indexOf(currentCostumer);
+    }
+    return -1;
+  }
+
+  public void updateCurrentCostumerData(Costumer currentCostumer) {
+    int position = getPositionOfCostumer(currentCostumer);
+    costumersList.set(position, currentCostumer);
+    updateCostumersList(costumersList);
+    saveCostumersData();
+
   }
 
 }

@@ -6,6 +6,7 @@ public class Atm {
   private Scanner sc;
   private int response = 9;
   private Costumer currentCostumer;
+  private Bank bank;
 
   public Atm() {
 
@@ -13,6 +14,7 @@ public class Atm {
 
   public void run(Costumer costumer) {
     this.currentCostumer = costumer;
+    bank = new Bank();
 
     sc = new Scanner(System.in);
     System.out.println("Welcome to World Bank ATM.");

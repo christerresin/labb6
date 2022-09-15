@@ -11,6 +11,11 @@ public class Costumer implements Serializable {
     this.name = name;
   }
 
+  public Costumer(String name, double balance) {
+    this.name = name;
+    this.balance = balance;
+  }
+
   private void setBalance(double amount) {
     balance = this.balance + amount;
   }
