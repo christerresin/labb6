@@ -42,7 +42,6 @@ public class Atm {
     bank = new Bank();
     bank.run();
     currentCustomer = bank.getCustomer(customerName);
-    System.out.println(currentCustomer.name);
 
     sc = new Scanner(System.in);
     System.out.println("Welcome to World Bank ATM.");
@@ -81,6 +80,7 @@ public class Atm {
     if (customerCurrentBalance >= amount) {
       customer.whitdrawMoney(amount);
       System.out.println("Whitdrawal of " + amount + " was successful.");
+      bank.updateCurrentCustomerData(currentCustomer);
       return true;
     }
     System.out.println("Unable to whitdraw that amount. Check your balance.");
