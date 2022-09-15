@@ -2,16 +2,16 @@ package javaatm;
 
 import java.io.Serializable;
 
-public class Costumer implements Serializable {
+public class Customer implements Serializable {
   private double balance;
   public String name;
 
-  public Costumer(String name) {
+  public Customer(String name) {
     this.balance = 0;
     this.name = name;
   }
 
-  public Costumer(String name, double balance) {
+  public Customer(String name, double balance) {
     this.name = name;
     this.balance = balance;
   }

@@ -7,38 +7,38 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    Costumer costumerUnderTest = new Costumer("Test test");
+    Customer customerUnderTest = new Customer("Test test");
     Atm atmUnderTest = new Atm();
 
     @Test
     void checkCostumerDeposit() {
-        assertTrue(costumerUnderTest.depositMoney(500));
-        assertEquals(500, costumerUnderTest.getBalance());
+        assertTrue(customerUnderTest.depositMoney(500));
+        assertEquals(500, customerUnderTest.getBalance());
     }
 
     @Test
     void checkCostumerWhitdrawal() {
-        costumerUnderTest.depositMoney(100);
-        costumerUnderTest.whitdrawMoney(50);
-        assertEquals(50, costumerUnderTest.getBalance());
+        customerUnderTest.depositMoney(100);
+        customerUnderTest.whitdrawMoney(50);
+        assertEquals(50, customerUnderTest.getBalance());
     }
 
     @Test
     void checkBalanceOfNewCostumer() {
-        assertEquals(0, costumerUnderTest.getBalance());
+        assertEquals(0, customerUnderTest.getBalance());
     }
 
     @Test
     void checkAtmDeposit() {
-        atmUnderTest.makeDeposit(costumerUnderTest, 100);
-        assertEquals(100, costumerUnderTest.getBalance());
+        atmUnderTest.makeDeposit(customerUnderTest, 100);
+        assertEquals(100, customerUnderTest.getBalance());
     }
 
     @Test
     void checkAtmWhitdrawal() {
-        costumerUnderTest.depositMoney(100);
-        assertEquals(true, atmUnderTest.makeWhitdrawal(costumerUnderTest, 50));
-        assertEquals(true, atmUnderTest.makeWhitdrawal(costumerUnderTest, 50));
-        assertEquals(false, atmUnderTest.makeWhitdrawal(costumerUnderTest, 5));
+        customerUnderTest.depositMoney(100);
+        assertEquals(true, atmUnderTest.makeWhitdrawal(customerUnderTest, 50));
+        assertEquals(true, atmUnderTest.makeWhitdrawal(customerUnderTest, 50));
+        assertEquals(false, atmUnderTest.makeWhitdrawal(customerUnderTest, 5));
     }
 }

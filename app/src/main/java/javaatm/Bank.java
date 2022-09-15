@@ -11,25 +11,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class Bank {
-  private List<Costumer> updatedCostumersList = new ArrayList<>();
-  private List<Costumer> costumersList = new ArrayList<>();
+  private List<Customer> updatedCustomersList = new ArrayList<>();
+  private List<Customer> customersList = new ArrayList<>();
   private String fileName = "data.bin";
 
   public void run() {
 
-    // addNewCostumer("Keanu");
-    // addNewCostumerWithBalance("Bob", 200);
-    // addNewCostumer("Stina");
+    // addNewCustomer("Keanu");
+    // addNewCustomerWithBalance("Bob", 200);
+    // addNewCustomer("Stina");
 
-    // saveCostumersData();
+    // saveCustomersData();
 
-    readCostumersData();
+    readCustomersData();
   }
 
-  public void saveCostumersData() {
+  public void saveCustomersData() {
     try {
       ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
-      os.writeObject(updatedCostumersList);
+      os.writeObject(updatedCustomersList);
       os.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -40,10 +40,10 @@ public class Bank {
 
   }
 
-  public void readCostumersData() {
+  public void readCustomersData() {
     try {
       ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
-      costumersList = (ArrayList) ois.readObject();
+      customersList = (ArrayList) ois.readObject();
       ois.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -55,39 +55,39 @@ public class Bank {
 
   }
 
-  private void addNewCostumer(String name) {
-    Costumer newCostumer = new Costumer(name);
-    updatedCostumersList.add(newCostumer);
+  private void addNewCustomer(String name) {
+    Customer newCustomer = new Customer(name);
+    updatedCustomersList.add(newCustomer);
   }
 
-  private void addNewCostumerWithBalance(String name, double balance) {
-    Costumer newCostumer = new Costumer(name, balance);
-    updatedCostumersList.add(newCostumer);
+  private void addNewCustomerWithBalance(String name, double balance) {
+    Customer newCustomer = new Customer(name, balance);
+    updatedCustomersList.add(newCustomer);
   }
 
-  private void updateCostumersList(List<Costumer> updatedList) {
-    this.updatedCostumersList = updatedList;
+  private void updateCustomersList(List<Customer> updatedList) {
+    this.updatedCustomersList = updatedList;
   }
 
-  public Costumer getCostumer(String costumerName) {
-    Optional<Costumer> foundCostumer = costumersList.stream().filter((c) -> c.name.equals(costumerName)).findFirst();
-    return foundCostumer.get();
+  public Customer getCustomer(String customerName) {
+    Optional<Customer> foundCustomer = customersList.stream().filter((c) -> c.name.equals(customerName)).findFirst();
+    return foundCustomer.get();
 
   }
 
-  public int getPositionOfCostumer(Costumer currentCostumer) {
-    if (costumersList.indexOf(currentCostumer) > 0) {
+  public int getPositionOfCustomer(Customer currentCustomer) {
+    if (customersList.indexOf(currentCustomer) > 0) {
 
-      return costumersList.indexOf(currentCostumer);
+      return customersList.indexOf(currentCustomer);
     }
     return -1;
   }
 
-  public void updateCurrentCostumerData(Costumer currentCostumer) {
-    int position = getPositionOfCostumer(currentCostumer);
-    costumersList.set(position, currentCostumer);
-    updateCostumersList(costumersList);
-    saveCostumersData();
+  public void updateCurrentCustomerData(Customer currentCustomer) {
+    int position = getPositionOfCustomer(currentCustomer);
+    customersList.set(position, currentCustomer);
+    updateCustomersList(customersList);
+    saveCustomersData();
 
   }
 

@@ -9,7 +9,7 @@ public class App {
 
         Bank bank = new Bank();
         bank.run();
-        Costumer loggedInCostumer = bank.getCostumer("Bob");
+        Customer loggedInCostumer = bank.getCustomer("Bob");
 
         Atm atm = new Atm();
         atm.run(loggedInCostumer);

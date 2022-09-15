@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class Atm {
   private Scanner sc;
   private int response = 9;
-  private Costumer currentCostumer;
+  private Customer currentCustomer;
   private Bank bank;
 
   public Atm() {
 
   }
 
-  public void run(Costumer costumer) {
-    this.currentCostumer = costumer;
+  public void run(Customer customer) {
+    this.currentCustomer = customer;
     bank = new Bank();
 
     sc = new Scanner(System.in);
@@ -38,19 +38,19 @@ public class Atm {
     }
   }
 
-  public void makeDeposit(Costumer costumer, double amount) {
-    if (costumer.depositMoney(amount)) {
+  public void makeDeposit(Customer customer, double amount) {
+    if (customer.depositMoney(amount)) {
       System.out.println("Deposit of " + amount + " was successful.");
-      double newBalance = costumer.getBalance();
+      double newBalance = customer.getBalance();
       System.out.println("New balance: " + newBalance);
     }
   }
 
-  public boolean makeWhitdrawal(Costumer costumer, double amount) {
-    double costumerCurrentBalance = costumer.getBalance();
+  public boolean makeWhitdrawal(Customer customer, double amount) {
+    double customerCurrentBalance = customer.getBalance();
 
-    if (costumerCurrentBalance >= amount) {
-      costumer.whitdrawMoney(amount);
+    if (customerCurrentBalance >= amount) {
+      customer.whitdrawMoney(amount);
       System.out.println("Whitdrawal of " + amount + " was successful.");
       return true;
     }
@@ -78,7 +78,7 @@ public class Atm {
 
   public void getCostumerBalance() {
     sc.nextLine(); // clear Scanner
-    double currentBalance = currentCostumer.getBalance();
+    double currentBalance = currentCustomer.getBalance();
     System.out.println("Current balance: " + currentBalance);
     clearWindow();
   }
@@ -87,7 +87,7 @@ public class Atm {
     sc.nextLine(); // clear Scanner
     System.out.print("Please enter amount to deposit: ");
     double depositAmount = sc.nextDouble();
-    makeDeposit(currentCostumer, depositAmount);
+    makeDeposit(currentCustomer, depositAmount);
     clearWindow();
   }
 
@@ -95,7 +95,7 @@ public class Atm {
     sc.nextLine(); // clear Scanner
     System.out.print("Please enter amount to whitdrawal: ");
     double whitdrawalAmount = sc.nextDouble();
-    makeWhitdrawal(currentCostumer, whitdrawalAmount);
+    makeWhitdrawal(currentCustomer, whitdrawalAmount);
     clearWindow();
   }
 
