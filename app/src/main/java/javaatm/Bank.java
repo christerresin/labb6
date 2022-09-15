@@ -76,7 +76,7 @@ public class Bank {
   }
 
   public int getPositionOfCustomer(Customer currentCustomer) {
-    if (customersList.indexOf(currentCustomer) > 0) {
+    if (customersList.indexOf(currentCustomer) >= 0) {
 
       return customersList.indexOf(currentCustomer);
     }

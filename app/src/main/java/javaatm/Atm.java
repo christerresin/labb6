@@ -9,33 +9,6 @@ public class Atm {
   private Bank bank;
 
   public Atm() {
-
-  }
-
-  public void run(Customer customer) {
-    this.currentCustomer = customer;
-    bank = new Bank();
-
-    sc = new Scanner(System.in);
-    System.out.println("Welcome to World Bank ATM.");
-
-    while (response != 0) {
-      presentOptionsMessage();
-
-      response = sc.nextInt();
-
-      switch (response) {
-        case 1:
-          getCostumerBalance();
-          break;
-        case 2:
-          makeCostumerDeposit();
-          break;
-        case 3:
-          makeCostumerWhitdrawal();
-          break;
-      }
-    }
   }
 
   public void run(String customerName) {
@@ -44,7 +17,7 @@ public class Atm {
     currentCustomer = bank.getCustomer(customerName);
 
     sc = new Scanner(System.in);
-    System.out.println("Welcome to World Bank ATM.");
+    System.out.println(currentCustomer.name + ", Welcome to World Bank ATM!");
 
     while (response != 0) {
       presentOptionsMessage();
