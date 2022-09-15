@@ -38,6 +38,34 @@ public class Atm {
     }
   }
 
+  public void run(String customerName) {
+    bank = new Bank();
+    bank.run();
+    currentCustomer = bank.getCustomer(customerName);
+    System.out.println(currentCustomer.name);
+
+    sc = new Scanner(System.in);
+    System.out.println("Welcome to World Bank ATM.");
+
+    while (response != 0) {
+      presentOptionsMessage();
+
+      response = sc.nextInt();
+
+      switch (response) {
+        case 1:
+          getCostumerBalance();
+          break;
+        case 2:
+          makeCostumerDeposit();
+          break;
+        case 3:
+          makeCostumerWhitdrawal();
+          break;
+      }
+    }
+  }
+
   public void makeDeposit(Customer customer, double amount) {
     if (customer.depositMoney(amount)) {
       System.out.println("Deposit of " + amount + " was successful.");
