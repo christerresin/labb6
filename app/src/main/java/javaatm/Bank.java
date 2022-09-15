@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-  private List<Costumer> costumers = new ArrayList<>();
+  private List<Costumer> updatedCostumersList = new ArrayList<>();
   private List<Costumer> costumersList;
   private String fileName = "data.bin";
 
   public Bank() {
 
-    Costumer keanu = new Costumer("Keanu Reeves");
-    Costumer bob = new Costumer("Bob Builder");
-    costumers.add(keanu);
-    costumers.add(bob);
+    addNewCostumer("Keanu");
+    addNewCostumer("Bob");
+    addNewCostumer("Stina");
 
-    saveCostumersData();
+    // saveCostumersData();
 
     readCostumersData();
   }
@@ -29,7 +28,7 @@ public class Bank {
   public void saveCostumersData() {
     try {
       ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
-      os.writeObject(costumers);
+      os.writeObject(updatedCostumersList);
       os.close();
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -56,6 +55,11 @@ public class Bank {
       er.printStackTrace();
     }
 
+  }
+
+  private void addNewCostumer(String name) {
+    Costumer newCostumer = new Costumer(name);
+    updatedCostumersList.add(newCostumer);
   }
 
 }
