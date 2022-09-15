@@ -1,8 +1,10 @@
 package javaatm;
 
-public class Costumer {
+import java.io.Serializable;
+
+public class Costumer implements Serializable {
   private double balance;
-  private String name;
+  public String name;
 
   public Costumer(String name) {
     this.balance = 0;
