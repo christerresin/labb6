@@ -8,9 +8,6 @@ public class Atm {
   private Customer currentCustomer;
   private Bank bank;
 
-  public Atm() {
-  }
-
   /**
    * Creates instance of Bank.class, loads customer data and presents ATM/Bank
    * options"
