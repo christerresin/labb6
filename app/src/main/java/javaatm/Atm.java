@@ -15,8 +15,8 @@ public class Atm {
     bank = new Bank();
     bank.run();
     currentCustomer = bank.getCustomer(customerName);
-
     sc = new Scanner(System.in);
+
     System.out.println(currentCustomer.name + ", Welcome to World Bank ATM!");
 
     while (response != 0) {
@@ -42,7 +42,6 @@ public class Atm {
     if (customer.depositMoney(amount)) {
       System.out.println("Deposit of " + amount + " was successful.");
       double newBalance = customer.getBalance();
-      bank.updateCurrentCustomerData(currentCustomer);
       System.out.println("New balance: " + newBalance);
     }
   }
@@ -53,7 +52,6 @@ public class Atm {
     if (customerCurrentBalance >= amount) {
       customer.whitdrawMoney(amount);
       System.out.println("Whitdrawal of " + amount + " was successful.");
-      bank.updateCurrentCustomerData(currentCustomer);
       return true;
     }
     System.out.println("Unable to whitdraw that amount. Check your balance.");
@@ -90,6 +88,7 @@ public class Atm {
     System.out.print("Please enter amount to deposit: ");
     double depositAmount = sc.nextDouble();
     makeDeposit(currentCustomer, depositAmount);
+    bank.updateCurrentCustomerData(currentCustomer);
     clearWindow();
   }
 
@@ -98,6 +97,7 @@ public class Atm {
     System.out.print("Please enter amount to whitdrawal: ");
     double whitdrawalAmount = sc.nextDouble();
     makeWhitdrawal(currentCustomer, whitdrawalAmount);
+    bank.updateCurrentCustomerData(currentCustomer);
     clearWindow();
   }
 

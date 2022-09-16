@@ -15,11 +15,15 @@ public class Bank {
   private List<Customer> customersList = new ArrayList<>();
   private String fileName = "data.bin";
 
+  /**
+   * Starts Bank instance and loads(reads) data from local bin file into
+   * customersList ArrayList<Customer>
+   */
   public void run() {
 
-    // addNewCustomer("Keanu");
-    // addNewCustomerWithBalance("Bob", 200);
-    // addNewCustomer("Stina");
+    // addNewCustomer(createNewCustomer("Keanu"));
+    // addNewCustomerWithBalance(createNewCustomerWithBalance("Bob", 200));
+    // addNewCustomer(createNewCustomer("Stina"));
 
     // saveCustomersData();
 
@@ -37,7 +41,6 @@ public class Bank {
       err.printStackTrace();
     }
     System.out.println("Done writing");
-
   }
 
   public void readCustomersData() {
@@ -52,16 +55,32 @@ public class Bank {
     } catch (ClassNotFoundException er) {
       er.printStackTrace();
     }
-
   }
 
-  private void addNewCustomer(String name) {
+  /**
+   * Creates a new Customer to add to the Banks customerList
+   *
+   * @param name String
+   * @return Customer
+   */
+  public Customer createNewCustomer(String name) {
     Customer newCustomer = new Customer(name);
-    updatedCustomersList.add(newCustomer);
+    return newCustomer;
   }
 
-  private void addNewCustomerWithBalance(String name, double balance) {
+  /**
+   * Creates a new Customer to add to the Banks customerList
+   *
+   * @param name    String
+   * @param balance double
+   * @return Customer
+   */
+  public Customer createNewCustomerWithBalance(String name, double balance) {
     Customer newCustomer = new Customer(name, balance);
+    return newCustomer;
+  }
+
+  private void addNewCustomer(Customer newCustomer) {
     updatedCustomersList.add(newCustomer);
   }
 
@@ -72,12 +91,10 @@ public class Bank {
   public Customer getCustomer(String customerName) {
     Optional<Customer> foundCustomer = customersList.stream().filter((c) -> c.name.equals(customerName)).findFirst();
     return foundCustomer.get();
-
   }
 
   public int getPositionOfCustomer(Customer currentCustomer) {
     if (customersList.indexOf(currentCustomer) >= 0) {
-
       return customersList.indexOf(currentCustomer);
     }
     return -1;
@@ -88,7 +105,5 @@ public class Bank {
     customersList.set(position, currentCustomer);
     updateCustomersList(customersList);
     saveCustomersData();
-
   }
-
 }

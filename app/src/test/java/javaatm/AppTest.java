@@ -6,9 +6,15 @@ package javaatm;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class AppTest {
-    Customer customerUnderTest = new Customer("Test test");
+    Customer customerUnderTest = new Customer("Test");
     Atm atmUnderTest = new Atm();
+    Bank bankUnderTest = new Bank();
+
+    List<Customer> customersListUnderTest = new ArrayList<>();
 
     @Test
     void checkCostumerDeposit() {
@@ -41,4 +47,18 @@ class AppTest {
         assertEquals(true, atmUnderTest.makeWhitdrawal(customerUnderTest, 50));
         assertEquals(false, atmUnderTest.makeWhitdrawal(customerUnderTest, 5));
     }
+
+    @Test
+    void checkIfCustomerWithNameIsCreated() {
+        Customer john = bankUnderTest.createNewCustomer("John");
+        assertEquals("John", john.name);
+    }
+
+    @Test
+    void checkIfCustomerWithNameAndBalanceIsCreated() {
+        Customer neo = bankUnderTest.createNewCustomerWithBalance("Neo", 101);
+        assertEquals("Neo", neo.name);
+        assertEquals(101, neo.getBalance());
+    }
+
 }
