@@ -14,6 +14,7 @@ public class Bank {
   private List<Customer> updatedCustomersList = new ArrayList<>();
   private List<Customer> customersList = new ArrayList<>();
   private String fileName = "data.bin";
+  private Customer newCustomer;
 
   /**
    * Starts Bank instance and loads(reads) data from local bin file into
@@ -22,7 +23,8 @@ public class Bank {
   public void run() {
 
     // addNewCustomer(createNewCustomer("Keanu"));
-    // addNewCustomerWithBalance(createNewCustomerWithBalance("Bob", 200));
+    // addNewCustomer(createNewCustomerWithBalance("Bob", 200));
+    // addNewCustomer(createNewCustomerWithBalance("Trinity", 200000000));
     // addNewCustomer(createNewCustomer("Stina"));
 
     // saveCustomersData();
@@ -88,7 +90,7 @@ public class Bank {
    * @return boolean
    */
   private boolean addNewCustomer(Customer newCustomer) {
-    if (getPositionOfCustomer(getCustomer(newCustomer.name)) >= 0) {
+    if (getPositionOfCustomer(getCustomer(newCustomer.name)) == -1) {
       customersList.add(newCustomer);
       updateCustomersList(customersList);
       System.out.println("New customer " + newCustomer.name + ", was added");
@@ -104,6 +106,9 @@ public class Bank {
 
   public Customer getCustomer(String customerName) {
     Optional<Customer> foundCustomer = customersList.stream().filter((c) -> c.name.equals(customerName)).findFirst();
+    if (foundCustomer.isEmpty()) {
+      return null;
+    }
     return foundCustomer.get();
   }
 
