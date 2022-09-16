@@ -11,6 +11,12 @@ public class Atm {
   public Atm() {
   }
 
+  /**
+   * Creates instance of Bank.class, loads customer data and presents ATM/Bank
+   * options"
+   *
+   * @param customerName
+   */
   public void run(String customerName) {
     bank = new Bank();
     bank.run();
