@@ -58,10 +58,11 @@ public class Bank {
   }
 
   /**
-   * Creates a new Customer to add to the Banks customerList
+   * Creates a new Customer to add to the Banks customerList. If customer with
+   * name already on file null is returned
    *
    * @param name String
-   * @return Customer
+   * @return Customer, null
    */
   public Customer createNewCustomer(String name) {
     Customer newCustomer = new Customer(name);
@@ -80,8 +81,13 @@ public class Bank {
     return newCustomer;
   }
 
-  private void addNewCustomer(Customer newCustomer) {
-    updatedCustomersList.add(newCustomer);
+  private boolean addNewCustomer(Customer newCustomer) {
+    if (getPositionOfCustomer(getCustomer(newCustomer.name)) >= 0) {
+      customersList.add(newCustomer);
+      return true;
+    }
+    System.out.println("Something went wrong. Can't add (null) to list");
+    return false;
   }
 
   private void updateCustomersList(List<Customer> updatedList) {
