@@ -106,6 +106,12 @@ public class Bank {
     return -1;
   }
 
+  /**
+   * Takes currentCustomer Customer, finds position in List, replaces and
+   * saves(writes) to file
+   *
+   * @param currentCustomer
+   */
   public void updateCurrentCustomerData(Customer currentCustomer) {
     int position = getPositionOfCustomer(currentCustomer);
     customersList.set(position, currentCustomer);
