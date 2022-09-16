@@ -81,12 +81,20 @@ public class Bank {
     return newCustomer;
   }
 
+  /**
+   * Takes newCustomer Customer and checks if already on file before updating list
+   *
+   * @param newCustomer
+   * @return boolean
+   */
   private boolean addNewCustomer(Customer newCustomer) {
     if (getPositionOfCustomer(getCustomer(newCustomer.name)) >= 0) {
       customersList.add(newCustomer);
+      updateCustomersList(customersList);
+      System.out.println("New customer " + newCustomer.name + ", was added");
       return true;
     }
-    System.out.println("Something went wrong. Can't add (null) to list");
+    System.out.println("Customer already on file");
     return false;
   }
 
